@@ -20,7 +20,9 @@ truffle deploy --network ropsten
 truffle console --network ropsten --verbose-rpc
 ```
 
-- Contract Address: 
+- MockWETH Contract Address: https://ropsten.etherscan.io/address/0x095629E092e3b12a62C6A5c9Face6049D4B15834
+
+- TradingVault Contract Address : https://ropsten.etherscan.io/address/0x4988E32C7F4C48Ab528BdF001103B0d7B889F8da
 
 ### Deploy to Mumbai testnet (MATIC)
 
@@ -40,4 +42,5 @@ truffle test
 
 
 ## Solana version
+(not yet)
 
