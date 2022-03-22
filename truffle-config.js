@@ -65,7 +65,7 @@
        confirmations: 2,    // # of confs to wait between deployments. (default: 0)
        timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
        skipDryRun: true,     // Skip dry run before migrations? (default: false for public nets )
-       networkCheckTimeout: 10000000000
+       networkCheckTimeout: 100000
      },
  
      matic: {
@@ -76,7 +76,7 @@
        skipDryRun: true,
        gas: 6000000,
        gasPrice: 10000000000,
-       networkCheckTimeout: 10000000000
+       networkCheckTimeout: 100000
      },
      // Useful for private networks
      // private: {

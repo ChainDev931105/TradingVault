@@ -81,7 +81,6 @@ contract('TradingVault test', async (accounts) => {
 
     const amount = 1000000000;
     const balance0 = (await tv.vaults.call(accounts[1], token)).balance.toNumber();
-    console.log({balance0});
 
     // deposit
     await tv.depositETH.sendTransaction({
@@ -89,15 +88,12 @@ contract('TradingVault test', async (accounts) => {
       value: amount
     });
     const balance1 = (await tv.vaults.call(accounts[1], token)).balance.toNumber();
-    const wbal1 = (await weth.balanceOf(accounts[1])).toNumber();
-    console.log({balance1, wbal1});
 
     // withdraw
     await tv.withdrawETH.sendTransaction(amount, {
       from: accounts[1]
     });
     const balance2 = (await tv.vaults.call(accounts[1], token)).balance.toNumber();
-    console.log({balance2});
 
     assert.equal(balance1 - balance0, amount, 'depositETH is not processed correctly');
     assert.equal(balance1 - balance2, amount, 'withdrawETH is not processed correctly');
