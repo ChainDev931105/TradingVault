@@ -59,6 +59,20 @@ contract TradingVault is IVault, Ownable {
         emit Deposit(msg.sender, token, amount);
     }
 
+    function depositETH()
+        external
+        payable
+        override
+    {
+        uint256 amount = msg.value;
+        (bool success, bytes memory data) = (address(weth)).delegatecall(
+            abi.encodeWithSignature("deposit()")
+        );
+        vaults[msg.sender][address(weth)].balance += amount;
+
+        emit Deposit(msg.sender, address(weth), amount);
+    }
+
     function withdraw(address token, uint256 amount)
         external
         override
@@ -75,5 +89,23 @@ contract TradingVault is IVault, Ownable {
         tkn.safeTransfer(msg.sender, amount);
 
         emit Withdraw(msg.sender, token, amount);
+    }
+
+    function withdrawETH(uint256 amount)
+        external
+        override
+        isAllowedUser
+        isValidAmount(amount)
+    {
+        uint256 balance = vaults[msg.sender][address(weth)].balance;
+        if (balance < amount) revert Vault__Insufficient_Balance(msg.sender, address(weth), balance);
+
+        vaults[msg.sender][address(weth)].balance -= amount;
+        
+        (bool success, bytes memory data) = (address(weth)).delegatecall(
+            abi.encodeWithSignature("withdraw(uint256)", amount)
+        );
+
+        emit Withdraw(msg.sender, address(this), amount);
     }
 }

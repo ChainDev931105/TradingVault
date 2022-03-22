@@ -15,6 +15,13 @@ interface IVault {
     /// @param amount the amount of tokens withdrawn
     function withdraw(address token, uint256 amount) external;
 
+    /// @notice
+    function depositETH() external payable;
+
+    /// @notice
+    /// @param amount the amount of ether withdrawn
+    function withdrawETH(uint256 amount) external;
+
     /// @notice adds a new supported token
     /// @param token the token to whitelist
     function whitelistToken(
