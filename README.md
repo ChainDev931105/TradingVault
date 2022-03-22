@@ -14,7 +14,7 @@ truffle deploy --network ropsten
 truffle console --network ropsten --verbose-rpc
 ```
 
-- MockWETH Contract Address: https://ropsten.etherscan.io/address/0x095629E092e3b12a62C6A5c9Face6049D4B15834
+- MockWETH Contract Address: https://ropsten.etherscan.io/address/0x0b573A4D668cD6c89A20Ef035bD6A381a23bFD7c
 
 - TradingVault Contract Address : https://ropsten.etherscan.io/address/0x456e0842188214C1AD682BBcF988953C8ed53e30
 
